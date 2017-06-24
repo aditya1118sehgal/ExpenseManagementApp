@@ -9,4 +9,16 @@
   {% else %}
   <p>You can see only your expenses</p>
   {% endif %}
+  <p>These are the expenses, click on a title to get more options:</p>
+  {% for expense in expenses %}
+      <div class="expense">
+          <h1><a href="{% url 'expense_detail' pk=expense.pk %}">{{ expense.title }}</a></h1>
+          <div class="date">
+              <p>TRANSACTION DATE: {{expense.created_date}}<p>
+          </div>
+          <p>AMOUNT = {{expense.amount|linebreaksbr}}</p>
+          <p>CREATED BY: {{expense.author}}</p>
+          <hr>
+      </div>
+  {% endfor %}
 {% endblock %}

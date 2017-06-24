@@ -8,4 +8,8 @@ urlpatterns = [
         url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
         url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
         url(r'^signup/$', ExpenseAppViews.signup, name='signup'),
+        url(r'^expense/new/$', ExpenseAppViews.expense_new, name='expense_new'),
+        url(r'^expense/(?P<pk>\d+)/$', ExpenseAppViews.expense_detail, name='expense_detail'),
+        url(r'^expense/(?P<pk>\d+)/edit/$', ExpenseAppViews.expense_edit, name='expense_edit'),
+        url(r'^expense/(?P<pk>\d+)/delete/$', ExpenseAppViews.expense_delete, name='expense_delete')
 ]

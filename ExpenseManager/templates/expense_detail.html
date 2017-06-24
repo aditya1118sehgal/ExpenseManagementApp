@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>EXPENSE DETAILS</h2>
+    <div class="expense">
+        <h3>{{ expense.title }}</h3>
+        <div class="date">
+            <p>TRANSACTION DATE: {{expense.created_date}}<p>
+        </div>
+        <p>AMOUNT = {{expense.amount|linebreaksbr}}</p>
+        <p>DESCRIPTION: {{ expense.text|linebreaksbr }}</p>
+        <p>CREATED BY: {{expense.author}}</p>
+        {% if user == expense.author %}
+          <a class="btn btn-default" href="{% url 'expense_edit' pk=expense.pk %}"><span class="glyphicon glyphicon-pencil"></span>EDIT</a>
+          <a class="btn btn-default" href="{% url 'expense_delete' pk=expense.pk %}"><span class="glyphicon glyphicon-trash">DELETE</span></a>
+        {% else %}
+        {% endif %}
+    </div>
+{% endblock %}
