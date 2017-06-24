@@ -88,7 +88,6 @@ def report(request):
             end_time=datetime.strptime(end_str, "%Y-%m-%d %H:%M:%S")
             expenses = get_user_expenses(request.user, start_time, end_time)
             total = compute_total(expenses)
-            print(expenses)
             return render(request,'report.html', {'expenses':expenses, 'total':total})
     else:
         form = ReportForm()
@@ -99,9 +98,7 @@ def report(request):
 # returns list of expenses for a specified user from a start datetime to end datetime
 def get_user_expenses(user, start, end):
     all_expenses = Expense.objects.filter(author=user)
-    print(all_expenses)
     expenses=[]
-    print(start)
     for expense in all_expenses:
         print(expense.created_date)
         if expense.created_date.replace(tzinfo=None) > start and expense.created_date.replace(tzinfo=None) < end:
