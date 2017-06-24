@@ -3,7 +3,6 @@
 {% block content %}
   <h2>Hi <small>{{ user.username }}</small>!</h2>
   <p>You have <strong>{{ user.profile.get_role }}</strong> user privelages</p>
-  <!-- TODO show expenses -->
   {% if user.profile.is_admin %}
   <p>You can see all expenses</p>
   {% else %}

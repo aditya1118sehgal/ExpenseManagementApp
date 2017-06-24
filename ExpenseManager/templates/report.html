@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h1>REPORT</h1>
+  <h3>TOTAL = {{total}}</h3>
+  <h5>These are the expenses:</h5>
+  <hr>
+  {% for post in expenses %}
+      <div class="post">
+          <h5>{{ post.title }}</a></h5>
+          CREATED ON:
+          <div class="date">
+              {{ post.created_date }}
+          </div>
+          <p>AMOUNT = {{post.amount|linebreaksbr}}</p>
+          <p>DESCRIPTION = {{ post.text|linebreaksbr }}</p>
+          <hr>
+      </div>
+  {% endfor %}
+{% endblock %}
